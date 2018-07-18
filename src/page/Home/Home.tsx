@@ -3,7 +3,7 @@ import {StyleSheet, View, ScrollView, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import {observer} from 'mobx-react';
 import {Routers} from '../../constans';
-import HomeHeader from './Header';
+import HomeHeader from './Catalog';
 import PostItem from './PostItem';
 import State from './store';
 
@@ -29,8 +29,10 @@ export default class HomeScreen extends React.Component<any, any>{
     render(){
         return(
             <View style={styles.container}>
-                <HomeHeader />
-                <PostList />
+                <View style={{margin: 12, flex: 1}}>
+                    <HomeHeader />
+                    <PostList />
+                </View>
             </View>
         )
     }
@@ -39,11 +41,11 @@ export default class HomeScreen extends React.Component<any, any>{
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        margin: 12,
         justifyContent: "flex-start",
         //alignItems: "flex-start",
         alignContent: "flex-start",
-        flexDirection: "column"
+        flexDirection: "column",
+        backgroundColor:"#fff"
     },
     post_list: {
         flex: 1,

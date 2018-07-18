@@ -1,41 +1,31 @@
 import * as React from 'react';
-import {StyleSheet, View, Text } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import {StyleSheet, View, Text, Button } from 'react-native';
+import NavigationService from '../../component/NavigationService';
 
-const Tabs = ['最新', '最热', '同城', '好玩', '交易', '更多»']
 
-const HomeHeader = () => (
-    <View style={styles.container}>
-        {Tabs.map((tab, index)=>
-            <Text style={styles.tabs} key={index}>{tab}</Text>
-        )}                  
+const Header = (props) => (
+    <View style={{height: 30, flexDirection: "row", backgroundColor:"#fff", }}>
+        <View style={styles.box}>
+            <Text style={{paddingLeft: 20, color:"#848fa6"}}>今日有趣的话题</Text>
+        </View>
+        <View style={{flex:1}}>
+            <Button title="发言" onPress={()=>{}}></Button>
+        </View>
     </View>
-);
+)
 
 const styles = StyleSheet.create({
-    container:{
-        paddingBottom: 5,
-        marginBottom: 5,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        borderBottomColor: "#dfdfdf",
-        borderBottomWidth: 2,
-        borderStyle: "solid"
-    },
-    tabs: {
-        fontSize: 13,
-        //marginLeft: 5,
-        height: 24,
-        lineHeight: 24,
-        paddingLeft: 10,
-        paddingRight: 10,
-        color: "#42BD56",
-        borderColor:"#42BD56",
+    box: {
+        marginLeft: 15,
+        backgroundColor:"#E8E8E8",  
+        borderColor: "#E8E8E8",
         borderWidth: 1,
         borderStyle: "solid",
-        //border: "1px solid #42BD56",
-        borderRadius: 2
+        borderRadius: 4,
+        flex: 4,
+        alignItems: "flex-start",
+        justifyContent: "center"
     }
 })
 
-export default HomeHeader;
+export default Header;

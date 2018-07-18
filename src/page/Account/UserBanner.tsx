@@ -2,6 +2,7 @@ import * as React from 'react';
 import {StyleSheet, View, ScrollView, Button, Text, Image } from 'react-native';
 
 import AppState from '../../store';
+import NavigationService from '../../component/NavigationService';
 
 const UserAvatar = () => (
     <Image 
@@ -10,13 +11,16 @@ const UserAvatar = () => (
     />
 );
 
-const BasicInfo = () => (
+const BasicInfo = (props) => (
     <View style={styles.basic_info}>
         <View>
             <Text style={{fontSize: 19, color: "#fff"}}>{AppState.userName}</Text>
             <Text style={styles.text}>星标用户</Text>
         </View>
-        <Text style={styles.home_link}>个人主页 ></Text>
+        <Button title="个人主页 >" 
+            onPress={() => NavigationService.navigate('Profile', null)}
+        >
+        </Button>
     </View>
 )
 

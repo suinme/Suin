@@ -1,10 +1,18 @@
 import * as React from 'react';
-import {View, Text } from 'react-native';
+import {View, Text, ScrollView } from 'react-native';
+
+import ProfileConver from './ProfileCover';
+import UserResume from './UserResume';
+import UserInfo from './UserInfo';
 
 const ProfileScreen = () => (
-    <View style={{flex: 1}}>
-        
-    </View>
+    <ScrollView style={{flex: 1}}>
+        <View style={{backgroundColor: "#fff"}}>
+            <ProfileConver />
+            <UserResume />
+        </View>
+        <UserInfo />
+    </ScrollView>
 );
 
 export default ProfileScreen;

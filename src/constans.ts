@@ -2,5 +2,6 @@ export const Routers = {
     Home: "Home",
     Explore: "Explore",
     Message: "Message",
-    Account: "Account"
+    Account: "Account",
+    Topic: "Topic"
 }

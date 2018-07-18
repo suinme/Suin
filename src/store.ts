@@ -5,8 +5,9 @@ class Store {
     @observable isAuth:boolean = true;
     @observable user = {
         token: "",
-        nickName: "测试账号",
-        userId: ""
+        nickName: "渐",
+        userId: "",
+        motto: "我是世界之主"
     }
 
     @action

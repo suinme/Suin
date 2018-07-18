@@ -1,10 +1,16 @@
 import * as React from 'react';
 import {View, Text } from 'react-native';
 
-const ExploreScreen = () => (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Post Screen</Text>
+import Content from './Content';
+import Comment from './Comment';
+
+const PostScreen = (props) => (
+    <View style={{flex: 1, backgroundColor:"#fff"}}>
+        <View style={{padding: 12}}>
+            <Content />
+            <Comment tid={props.navigation.getParam('tid')}/>
+        </View>
     </View>
 );
 
-export default ExploreScreen;
+export default PostScreen;

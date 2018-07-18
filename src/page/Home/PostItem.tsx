@@ -1,7 +1,9 @@
 import * as React from "react";
-import {StyleSheet, View, Text, Button, Image } from 'react-native';
+import {StyleSheet, View, Text, Button, Image, TouchableOpacity } from 'react-native';
 
 import { PostModel } from '../../entity';
+import {Routers} from '../../constans';
+import NavigationService from '../../component/NavigationService';
 
 /*
  [   Text    ] | [  ]
@@ -11,10 +13,11 @@ import { PostModel } from '../../entity';
 */
 
 const PostItem = (props:PostModel) =>(
-    <View style={styles.container}>
+    <View style={styles.container} >
+        <TouchableOpacity onPress={() => {NavigationService.navigate(Routers.Topic, {tid:props.tid})}}>
         <View style={styles.row}>
             <View style={styles.column}>
-                <Text style={styles.title}>{props.title}</Text>
+                <Text style={styles.title} >{props.title}</Text>
                 <View style={styles.row}>
                     <Image style={styles.user_avatar} source={{uri:props.avatar}} />
                     <Text style={styles.topic_author}>作者:{props.author}</Text>
@@ -26,6 +29,7 @@ const PostItem = (props:PostModel) =>(
             <Text style={styles.left}>{props.replyCount}回应</Text>
             <Text style={styles.right}>{props.createTime}</Text>
         </View>
+        </TouchableOpacity>
     </View>
 )
 

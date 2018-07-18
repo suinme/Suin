@@ -1,9 +1,8 @@
 import * as React from 'react';
-import SafeAreaView from 'react-native-safe-area-view';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStackNavigator, createBottomTabNavigator, SafeAreaView } from 'react-navigation';
 
-import Counter from './src/component/Counter';
+import NavigationService from './src/component/NavigationService';
 import {Routers} from './src/constans';
 import HomeScreen from './src/page/Home';
 import ExploreScreen from './src/page/Explore';
@@ -24,7 +23,8 @@ const RootStack = createBottomTabNavigator(
 
 const App = () => (
     <SafeAreaView style={styles.container}>
-      <RootStack />
+      <RootStack ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef)}} />
     </SafeAreaView>
 )
 export default App;
