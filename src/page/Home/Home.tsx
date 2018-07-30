@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {StyleSheet, View, ScrollView, Button } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import {observer} from 'mobx-react';
-import {Routers} from '../../constans';
-import HomeHeader from './Catalog';
+import {Routers} from '../../constants';
+import Catalog from './Catalog';
 import PostItem from './PostItem';
+import Header from './Header';
 import State from './store';
 
 import { defaultPostModel } from '../../entity';
@@ -28,12 +29,14 @@ export default class HomeScreen extends React.Component<any, any>{
     }
     render(){
         return(
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
+                <Header />
                 <View style={{margin: 12, flex: 1}}>
-                    <HomeHeader />
+                    <Catalog />
+                    <Button title="刷新首页" onPress={()=>{State.fetchPostList();}}/>
                     <PostList />
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
 }

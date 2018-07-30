@@ -2,8 +2,9 @@ import * as React from "react";
 import {StyleSheet, View, Text, Button, Image, TouchableOpacity } from 'react-native';
 
 import { PostModel } from '../../entity';
-import {Routers} from '../../constans';
+import {Routers} from '../../constants';
 import NavigationService from '../../component/NavigationService';
+import * as Utils from '../../utils';
 
 /*
  [   Text    ] | [  ]
@@ -23,11 +24,13 @@ const PostItem = (props:PostModel) =>(
                     <Text style={styles.topic_author}>作者:{props.author}</Text>
                 </View>
             </View>
-            <Image source={{uri:props.image}} style={styles.topic_cover}/>   
+            {props.image && (
+                <Image source={{uri:props.image}} style={styles.topic_cover}/>   
+            )}
         </View>
         <View style={styles.topic_info}>
             <Text style={styles.left}>{props.replyCount}回应</Text>
-            <Text style={styles.right}>{props.createTime}</Text>
+            <Text style={styles.right}>{Utils.formatTimestamp(props.createTime)}</Text>
         </View>
         </TouchableOpacity>
     </View>

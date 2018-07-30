@@ -1,4 +1,5 @@
 import { observable, action} from "mobx"
+import {Domain} from '../../constants';
 
 interface LoginResponse{
     statusCode:number;
@@ -22,20 +23,25 @@ const TOPIC_LIST = [
     {uid:'171039889', tid:'117815056',author:'はる', replyCount:93, createTime:'06-01 14:10',avatar:'https://img3.doubanio.com/icon/u82680283-6.jpg', title:'男友家的房子应该要男友出钱装修吗？'},
 ]
 
-const POST_LIST_URL = "http://www.suin.me:9000/api/forum/topics"
+const POST_LIST_URL = "/api/forum/topics"
 
 class Store {
     @observable postList = []
     tid = "";
+    @observable newTopic = {
+        title:"",
+        content:""
+    }
 
     @action fetchPostList=()=>{
-        /*
-        fetch(`${POST_LIST_URL}?tid=${this.tid}`)
-        .then(response=>response.json())
+        console.info(`request ${Domain}${POST_LIST_URL}?tid=${this.tid}`);
+        fetch(`${Domain}${POST_LIST_URL}?tid=${this.tid}`)
+        .then(response=>{
+            //console.log("response:", response.text().then((txt)=>{console.log(txt)}))
+            return response.json()
+        })
         .then(json=>this.postList=json.result)
         .catch(err=>console.log(err));
-        */
-        this.postList = TOPIC_LIST;
     }
 }
 

@@ -23,15 +23,15 @@ export const formatTimestamp = (timeStamp:number) => {
     }
     // 大于一天的
     if (interval > Time.Day){
-        return `${interval/Time.Day}天前`
+        return `${Math.round(interval/Time.Day)}天前`
     }
     // 大于一小时的
     if (interval > Time.Hour){
-        return `${interval/Time.Hour}小时前`
+        return `${Math.round(interval/Time.Hour)}小时前`
     }
     // 大于一分钟的
     if (interval > Time.Minute){
-        return `${interval/Time.Minute}分钟前`
+        return `${Math.round(interval/Time.Minute)}分钟前`
     }
     return `${interval}秒前`
 }

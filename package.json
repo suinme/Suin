@@ -5,6 +5,7 @@
   "devDependencies": {
     "@types/react": "^16.4.6",
     "@types/react-native": "^0.56.1",
+    "@types/react-navigation": "^2.0.11",
     "@types/react-router-native": "^4.2.3",
     "jest-expo": "~27.0.0",
     "react-native-scripts": "1.14.0",

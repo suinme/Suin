@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, Text, Image, StyleSheet, ImageBackground } from 'react-native';
-
+import NavigationService from '../../component/NavigationService';
+import {Routers} from '../../constants';
 import AppState from '../../store';
 
 const UserResume = () => (
@@ -14,7 +15,10 @@ const UserResume = () => (
             </View>
         </View>
         <View >
-            <Text style={styles.edit_box}>编辑资料</Text>
+            <Text style={styles.edit_box} 
+                onPress={()=>NavigationService.navigate(Routers.EditProfile, null)}>
+                编辑资料
+            </Text>
         </View>
     </View>
 )

@@ -1,18 +1,28 @@
 import * as React from 'react';
-import {View, Text, ScrollView } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-import ProfileConver from './ProfileCover';
-import UserResume from './UserResume';
-import UserInfo from './UserInfo';
+import EditProfileScreen from './EditProfile';
+import ProfileScreen from './Profile';
 
-const ProfileScreen = () => (
-    <ScrollView style={{flex: 1}}>
-        <View style={{backgroundColor: "#fff"}}>
-            <ProfileConver />
-            <UserResume />
-        </View>
-        <UserInfo />
-    </ScrollView>
-);
+let flag = false;
 
-export default ProfileScreen;
+export default createStackNavigator({
+    Profile: {
+        screen: ProfileScreen,
+        navigationOptions: ({ navigation }) => {
+            console.log("[HomeScreen]", navigation)
+            return {
+                header: null
+            }
+        }
+    },
+    EditProfile: { 
+        screen: EditProfileScreen,
+        navigationOptions: ({ navigation }) => {
+            return {
+                header: null
+            }
+        }
+    }
+});

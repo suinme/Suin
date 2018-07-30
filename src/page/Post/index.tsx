@@ -1,16 +1,31 @@
 import * as React from 'react';
-import {View, Text } from 'react-native';
+import {View, KeyboardAvoidingView } from 'react-native';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 
 import Content from './Content';
 import Comment from './Comment';
+import Reply from './Reply';
 
-const PostScreen = (props) => (
-    <View style={{flex: 1, backgroundColor:"#fff"}}>
-        <View style={{padding: 12}}>
-            <Content />
-            <Comment tid={props.navigation.getParam('tid')}/>
-        </View>
-    </View>
-);
+import Store from './store';
 
-export default PostScreen;
+export default class PostScreen extends React.Component<any, any>{
+    componentDidMount(){
+        Store.setTid(this.props.navigation.getParam('tid'));
+    }
+    componentWillReceiveProps(nextProps){
+        Store.setTid(nextProps.navigation.getParam('tid'));
+    }
+    render(){
+        return (
+            <SafeAreaView style={{flex: 1, backgroundColor:"#fff"}}>
+                <KeyboardAvoidingView style={{flex:1}} behavior="padding">
+                    <View style={{flex:1, padding: 12}}>
+                        <Content />
+                        <Comment />
+                    </View>
+                    <Reply />
+                </KeyboardAvoidingView>
+            </SafeAreaView>
+        )
+    }  
+};

@@ -24,13 +24,10 @@ const Comment = (props:CommentModel) => (
 )
 
 @observer
-export default class ReplyList extends React.Component<{tid:string}, any>{
-    componentDidMount(){
-        Store.fetchComments(this.props.tid)
-    }
+export default class ReplyList extends React.Component<any, any>{
     render(){
         return(
-            <View style={{marginTop: 15}}>
+            <View style={{flex:1,marginTop: 15}}>
                 <Text style={{fontSize:17, fontWeight:"bold"}}>评论</Text>
                 {Store.comments.map((item, index)=>(
                     <Comment {...item} key={index}/>
